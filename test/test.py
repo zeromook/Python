@@ -88,3 +88,40 @@ def count_vowel(s):
 
 print(count_vowel("pythonian"))
 """
+"""
+2. 리스트 [1,3,5,4,2] 값을 [5,4,3,2,1]로 만들어서 출력한다.
+
+a = [1,3,5,4,2]
+
+(1)
+
+(2)___________________
+
+print(a)
+
+
+[출력결과]
+
+[5,4,3,2,1]
+"""
+
+kor_score = [77, 88, 76, 44, 56]
+
+math_score = [96, 99, 100, 55, 66]
+
+eng_score = [50, 60, 70, 80, 90]
+
+midterm_score = [kor_score, math_score, eng_score]
+for x in zip(math_score,kor_score,eng_score):
+    print('총점은 %d 평균은 %.2f점 입니다.' % (sum(x),sum(x) // len(midterm_score)))
+
+
+
+    #sum += int(i[count])
+    #avg = sum/len(midterm_score)
+    #print('총점은 %d 평균은 %.2f입니다.' % (sum,avg))
+
+
+
+
+life = {'animal': {'cats':('Kim','Lee','Choi')},'octopi':(),'emus':{},'plants':{},'other':{}}

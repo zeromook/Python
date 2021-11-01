@@ -18,6 +18,20 @@
     [참고] 파이썬 내장 예외
         https://docs.python.org/3/library/exceptions.html
 """
+
+
+try:
+     10/0
+except Exception:
+    print("예외")
+else:                               #예외가 발생하지 않으면 실행
+    print('예외발생하지 않았을때')
+finally:                            #예외가 발생하든 안하든 무조건 마지막에 실행
+    print('마지막에 무조건 실행')
+
+print('정상종료')
+
+
 """
 # 0으로 나누기
 #(1)
