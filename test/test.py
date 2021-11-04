@@ -1,127 +1,64 @@
-"""
-totalScore = 0
+print('1----------------------------------------------------------------------\n')
+total = []
+try:
+    with open('sample.txt', 'r', encoding='utf-8') as f:  #with로 파일을 오픈
+        while True:                                       #while문으로 무한루프를 돌리고
+            a = f.readline()
+            if not a: break                               #파일에 더이상 라인이없으면 break
+            total.append(int(a))
+except FileNotFoundError as e:
+     print('파일을 찾을 수 없음................///에러코드 -', e)
 
-for i in range(5):
-    score = int(input("점수를 입력하세요 : "))
-    totalScore += score
+print('점수의 총합은 %d점 입니다.' % sum(total))              #sum내장함수로 total의 총합계산
+print('점수의 평균은 %.2f점 입니다.' % (sum(total) / len(total)))#sum(total)로 평균계산
 
-sum = totalScore/5
-print("평균 = %.1f" % (sum))
-"""
+print('\n2----------------------------------------------------------------------\n')
+total = []
+try:
+    with open('dream.txt','r',encoding='utf-8') as f:
+        while True:
+            a = f.readline()
+            if not a: break
+            total.append(a)
+except FileNotFoundError as e:
+    print('파일을 찾을 수 없음................///에러코드 -', e)
+
+for idx,i in enumerate(total):
+    print(str(idx)+'--'+i,end="")   #total을 하나씩 가져오는데 enumerate로 인덱스값도 같이 출력되게함
 
 
-"""
-text = input("문자열 입력 : ")
-print(text[::-1])
-"""
+print('\n\n3----------------------------------------------------------------------\n')
 
-"""
-import math
-import numpy
 
-total = 0
-su = list(map(int,input("정수리스트 입력 : ").split()))
-sum = numpy.mean(su)
-std = math.sqrt(sum)
-print("평균 :",sum)
-print("표준편차 :%.2f" % std)
-"""
-
-"""
-input_str = input("문자열을 입력하시오: ")
 count = 0
-num = 2
-
-#Dictionary 세팅
-dictionary = {}
-for i in range(65,91): # 아스키코드 65..91 은 (A..Z+1)
-    if(count==3): #규칙이
-        num = num + 1
-        count = 0
-    dictionary[chr(int(i))] = num
-    count = count + 1
-
-
-answer = "" #answer 값 출력
-for i in input_str:
-    answer += str(dictionary[str(i)])
-
-print(answer)
-"""
-"""
-list_data_a = [1, 2]
-list_data_b = [3, 4]
-for i in list_data_a:
-    for j in list_data_b:
-        result = i + j
-
-print(result)
-"""
-"""
-def even_filter(args):      #리스트를 인자로 받아 짝수만 갖는 리스트 반환하는 함수
-    result = [ r for r in args if r%2==0]
-    return result
-
-print(even_filter([1, 2, 4, 5, 8, 9, 10]))
-
-
-def is_prime_number(a):     #주어진 수가 소수인지 아닌지 판단하는 함수
-    for i in range(2,a/2+1):
-        if a % i == 0:
-            return False
-    return True
-
-print(is_prime_number(60))
-print(is_prime_number(61))
-
-
-주어진 문자열에서 모음의 개수를 출력하는 함수 ( 함수명 : count_vowel )
-
-
-def count_vowel(s):
-    count = 0
-    vowel = ["a","e","i","o","u"]
-    for i in s:
-        if i in vowel:
+try:
+    with open('dream.txt','r',encoding='utf-8')as f:
+        a = f.read()
+        for i in a:
             count += 1
-    return count
-
-print(count_vowel("pythonian"))
-"""
-"""
-2. 리스트 [1,3,5,4,2] 값을 [5,4,3,2,1]로 만들어서 출력한다.
-
-a = [1,3,5,4,2]
-
-(1)
-
-(2)___________________
-
-print(a)
+        print("총 글자의 수 : %d" % count)
+        print("총 단어의 수 : %d" % len(a.split(" ")))
+        print("총 줄의 수 : %d" % len(a.split("\n")))
+except FileNotFoundError as e:
+    print('파일을 찾을 수 없음................///에러코드 -', e)
 
 
-[출력결과]
+print('\n4----------------------------------------------------------------------\n')
+import os
+from datetime import datetime
+import random
+def createF(directoryname,filename):
+    try:
+        if not os.path.exists(directoryname):
+            os.makedirs(directoryname)
+            with open(filename, 'w', encoding='utf-8') as f:
+                for i in range(10):
+                    f.write(str(datetime.now()) + str(random.randrange(10))+'\n')
+        print('파일이 정상적으로 작성되었습니다.')
+    except OSError as e:
+        print("OS 오류가 발생하였습니다. 에러코드 - ",e)
 
-[5,4,3,2,1]
-"""
+createF('logtemp','logtemp/temp_log.txt')
 
-kor_score = [77, 88, 76, 44, 56]
+print('\n5----------------------------------------------------------------------\n')
 
-math_score = [96, 99, 100, 55, 66]
-
-eng_score = [50, 60, 70, 80, 90]
-
-midterm_score = [kor_score, math_score, eng_score]
-for x in zip(math_score,kor_score,eng_score):
-    print('총점은 %d 평균은 %.2f점 입니다.' % (sum(x),sum(x) // len(midterm_score)))
-
-
-
-    #sum += int(i[count])
-    #avg = sum/len(midterm_score)
-    #print('총점은 %d 평균은 %.2f입니다.' % (sum,avg))
-
-
-
-
-life = {'animal': {'cats':('Kim','Lee','Choi')},'octopi':(),'emus':{},'plants':{},'other':{}}
